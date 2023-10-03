@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import './Guests.css';
 import SliderGuests from './SliderGuests';
+import ReactPlayer from 'react-player';
 
 const Guests = () => {
   const [index, setIndex] = useState(0);
 
   const prevButton = () => {
     if (index <= 0) {
-      setIndex(5);
+      setIndex(4);
     } else {
       setIndex(index - 1);
     }
@@ -17,7 +18,7 @@ const Guests = () => {
   };
 
   const nextButton = () => {
-    if (index >= 5) {
+    if (index >= 4) {
       setIndex(0);
     } else {
       setIndex(index + 1);
@@ -28,18 +29,16 @@ const Guests = () => {
   };
 
   const videoArray = [
-    '/videos/1.mp4',
-    '/videos/2.mp4',
-    '/videos/3.mp4',
-    '/videos/4.mp4',
-    '/videos/5.mp4',
-    '/videos/6.mp4',
+    'https://youtu.be/4cQeg900iuw?si=NFQuRNwy8AzkDYUZ',
+    'https://youtu.be/k1-yXlX-YRY?si=alltQK_otILuepq_',
+    'https://youtu.be/ycAkZ8hsSwY?si=PcFErLe1BRTCHOt2',
+    'https://youtu.be/oQvVmVkBTjs?si=I-lP_9t-ETqQIo63',
+    'https://youtu.be/9oKPQyi8py4?si=JID9C7dBvWW7hVdu',
   ];
   const msgArray = [
     'Mr. Muttiah Muralitharan',
     'Miss Alex Blackwell',
     'Mr. Baichung Bhutia',
-    'Mr. Gary Kirsten',
     'Miss P. V. Sindhu',
     'Mr. Pullela Gopichand',
   ];
@@ -315,19 +314,26 @@ const Guests = () => {
             </div>
           </div>
         </section>
-
+        {/* <ReactPlayer url='https://youtu.be/4cQeg900iuw?si=NFQuRNwy8AzkDYUZ'/> */}
         <section id="video" className="ftco-section_guests">
           <div className="container_guests col-sm-7">
             <div className="embed-responsive embed-responsive-4by3">
-              <video
+            <ReactPlayer 
+               url={videoArray[index]}
+               width="100"
+               height="100" 
+            />
+              {/* <video
                 id="video1"
                 width="320"
                 height="240"
                 key={videoArray[index]}
                 controls
-              >
-                <source src={videoArray[index]} type="video/mp4" />
-              </video>
+              > */}
+                {/* <source src={videoArray[index]} type="video/mp4" /> */}
+                {/* <iframe src='https://youtu.be/4cQeg900iuw?si=NFQuRNwy8AzkDYUZ' title='Videos'></iframe> */}
+                {/* <ReactPlayer url='https://youtu.be/4cQeg900iuw?si=NFQuRNwy8AzkDYUZ' type="url" controls={true}/> */}
+              {/* </video> */}
               <div id="overlay-text">
                 <p className="para_guests">
                   Best wishes from {msgArray[index]}
